@@ -1,6 +1,6 @@
 {
-  "name": "nedboose",
-  "version": "0.1.0",
+  "name": "@turbopasi/nedboose",
+  "version": "1.0.0",
   "description": "Lightweight NeDB-based mini ORM with JSON persistence.",
   "type": "commonjs",
   "main": "./src/index.js",
