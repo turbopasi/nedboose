@@ -1,6 +1,13 @@
 {
   "name": "@turbopasi/nedboose",
-  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/turbopasi/nedboose.git"
+  },
+  "bugs": {
+    "url": "https://github.com/turbopasi/nedboose/issues"
+  },
+  "version": "1.0.1",
   "description": "Lightweight NeDB-based mini ORM with JSON persistence.",
   "type": "commonjs",
   "main": "./src/index.js",
