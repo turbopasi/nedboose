@@ -1,6 +1,6 @@
 # NeDBoose
 
-Ein minimalistischer Mongoose-ähnlicher Wrapper für `@seald-io/nedb` in Vanilla Node.js.
+A minimal Mongoose-like wrapper for `@seald-io/nedb` in vanilla Node.js.
 
 ## Dependencies
 
@@ -10,18 +10,18 @@ Ein minimalistischer Mongoose-ähnlicher Wrapper für `@seald-io/nedb` in Vanill
 
 ## Features
 
-* **Schema-Validierung**: Pflichtfelder (`required`), Standardwerte (`default`), Typprüfung (String, Number, Array, etc.).
-* **Indexierung & Unique**: Felder mit `index` oder `unique`-Flag werden automatisch als Index angelegt.
-* **TTL-Index**: Ablaufen von Dokumenten via `ttl` in Sekunden.
+* **Schema validation**: required fields (`required`), default values (`default`), type checking (String, Number, Array, etc.).
+* **Indexing & Unique**: fields with the `index` or `unique` flag are automatically indexed.
+* **TTL index**: expire documents via `ttl` in seconds.
 * **CRUD**: `create`, `find`, `findOne`, `update`, `delete`.
-* **Populate**: Referenzen auf andere Models auflösen (`ref`), inklusive Batch-Fetch (Vermeidung von N+1).
-* **Query-Optionen**: `sort()`, `skip()`, `limit()`.
-* **Autocompaction**: Automatische Datenbankverdichtung.
-* **In-Memory**: Optional über `inMemoryOnly`.
+* **Populate**: resolve references to other models (`ref`), including batch fetching (avoiding N+1).
+* **Query options**: `sort()`, `skip()`, `limit()`.
+* **Autocompaction**: automatic database compaction.
+* **In-memory**: optional via `inMemoryOnly`.
 
 ## Usage
 
-### Models definieren
+### Defining Models
 
 ```js
 const { model } = require('nedboose');
@@ -35,12 +35,12 @@ const Author = model('Author', {
 // Book
 const Book = model('Book', {
   title:       { type: String, required: true, index: true },
-  publishedAt: { type: Date,   default: () => new Date(), ttl: 60 * 60 * 24 * 30 }, // 30 Tage
+  publishedAt: { type: Date,   default: () => new Date(), ttl: 60 * 60 * 24 * 30 }, // 30 days
   author:      { type: String, ref: 'Author', required: true },
 });
 ```
 
-### Dokumente anlegen
+### Creating Documents
 
 ```js
 (async () => {
@@ -50,11 +50,11 @@ const Book = model('Book', {
 })();
 ```
 
-### Referenzen auflösen (Populate)
+### Resolving References (Populate)
 
 ```js
 (async () => {
-  // Einzel-Abfrage mit Populate
+  // Single query with populate
   const book = await Book
     .findOne({ title: 'Der Process' })
     .populate('author')
@@ -74,20 +74,20 @@ const Book = model('Book', {
 })();
 ```
 
-## Optionen
+## Options
 
-Beim Erstellen eines Models kann ein drittes `options`-Objekt übergeben werden:
+When creating a model you can pass a third `options` object:
 
 ```js
 const Session = model('Session', { /* schema */ }, {
   inMemoryOnly: true,
-  autocompactionInterval: 60000, // jede Minute
+  autocompactionInterval: 60000, // every minute
 });
 ```
 
-* `inMemoryOnly` (boolean): Datenbank nur im RAM (kein File).
-* `autocompactionInterval` (ms): Intervall für autocompaction.
+* `inMemoryOnly` (boolean): keep the database in RAM (no file).
+* `autocompactionInterval` (ms): interval for autocompaction.
 
 ---
 
-> **Hinweis**: Dieses Package ist bewusst minimal gehalten. Für erweiterte Funktionalität (Middleware, Hooks) empfiehlt sich Mongoose oder andere ORMs.
+> **Note**: This package is intentionally minimal. For advanced functionality (middleware, hooks), consider using Mongoose or other ORMs.
