@@ -4,11 +4,16 @@
   "description": "Lightweight NeDB-based mini ORM with JSON persistence.",
   "type": "commonjs",
   "main": "./src/index.js",
-  "keywords": ["nedb", "orm", "json", "persistence", "lightweight"],
-  "author": "Your Name",
+  "keywords": [
+    "nedb",
+    "orm",
+    "json",
+    "persistence",
+    "lightweight"
+  ],
+  "author": "Pascal Lamers <office@pascal-lamers.at>",
   "license": "MIT",
   "dependencies": {
-    "@seald-io/nedb": "^4.0.4",
-    "uuid": "^9.0.0"
+    "@seald-io/nedb": "^4.0.4"
   }
 }

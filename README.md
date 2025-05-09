@@ -1,6 +1,6 @@
 # NeDBoose
 
-A minimal Mongoose-like wrapper for `@seald-io/nedb` in vanilla Node.js.
+A minimal Mongoose-like wrapper for `@seald-io/nedb` in vanilla Node.js for a simple, local persistent storage.
 
 ## Dependencies
 
